@@ -21,7 +21,8 @@ import AppButton from './app/components/AppButton';
 import AppCard from './app/components/AppCard';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 export default function App() {
-  return <LoginScreen />;
+  return <RegisterScreen />;
 }
