@@ -11,7 +11,7 @@ import {
 
 import Screen from './Screen';
 
-import AppText from './AppText';
+import Text from './Text';
 import PickerItem from './PickerItem';
 
 import defaultStyles from '../config/styles';
@@ -19,7 +19,7 @@ import colors from '../config/colors';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-function AppPicker({
+function Picker({
   icon,
   items,
   onSelectItem,
@@ -44,9 +44,9 @@ function AppPicker({
             />
           )}
           {selectedItem ? (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            <Text style={styles.text}>{selectedItem.label}</Text>
           ) : (
-            <AppText style={styles.placeholder}>{placeholder}</AppText>
+            <Text style={styles.placeholder}>{placeholder}</Text>
           )}
           <MaterialCommunityIcons
             name="chevron-down"
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppPicker;
+export default Picker;

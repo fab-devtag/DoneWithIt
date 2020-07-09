@@ -5,12 +5,7 @@ import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
 import CategoryPickerItem from './../components/CategoryPickerItem';
-import {
-  AppForm,
-  AppFormField,
-  AppFormPicker,
-  SubmitButton,
-} from '../components/forms';
+import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
@@ -79,7 +74,7 @@ const categories = [
 function ListingEditScreen(props) {
   return (
     <Screen style={styles.container}>
-      <AppForm
+      <Form
         initialValues={{
           title: '',
           price: '',
@@ -89,15 +84,15 @@ function ListingEditScreen(props) {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
+        <FormField maxLength={255} name="title" placeholder="Title" />
+        <FormField
           name="price"
           maxLength={8}
           placeholder="Price"
           keyboardType="numeric"
           width={120}
         />
-        <AppFormPicker
+        <FormPicker
           PickerItemComponent={CategoryPickerItem}
           numberOfColumns={3}
           name="category"
@@ -105,7 +100,7 @@ function ListingEditScreen(props) {
           items={categories}
           width="50%"
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           numberOfLines={3}
@@ -113,7 +108,7 @@ function ListingEditScreen(props) {
           placeholder="Description"
         />
         <SubmitButton title="Post" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AppText from './AppText';
+import AppText from './Text';
 import Icon from './Icon';
 
 function CategoryPickerItem({ onPress, item }) {
   return (
     <View style={styles.container} onPress={onPress}>
       <Icon size={80} backgroundColor={item.backgroundColor} name={item.icon} />
-      <AppText style={styles.label}>{item.label}</AppText>
+      <Text style={styles.label}>{item.label}</Text>
     </View>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import AppPicker from '../AppPicker';
+import Picker from '../Picker';
 import ErrorMessage from './ErrorMessage';
 
-function AppFromPicker({
+function FromPicker({
   items,
   name,
   placeholder,
@@ -16,7 +16,7 @@ function AppFromPicker({
 
   return (
     <React.Fragment>
-      <AppPicker
+      <Picker
         numberOfColumns={numberOfColumns}
         PickerItemComponent={PickerItemComponent}
         items={items}
@@ -30,4 +30,4 @@ function AppFromPicker({
   );
 }
 
-export default AppFromPicker;
+export default FromPicker;

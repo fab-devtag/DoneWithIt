@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  ImageBackground,
-  Image,
-  Text,
-  TextInput,
-  Switch,
-} from 'react-native';
+import {} from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
@@ -17,10 +10,10 @@ import ListingsScreen from './app/screens/ListingsScreen';
 import LoginScreen from './app/screens/LoginScreen';
 
 import Screen from './app/components/Screen';
-import AppButton from './app/components/AppButton';
-import AppCard from './app/components/AppCard';
-import AppTextInput from './app/components/AppTextInput';
-import AppPicker from './app/components/AppPicker';
+import Button from './app/components/Button';
+import Card from './app/components/Card';
+import TextInput from './app/components/TextInput';
+import Picker from './app/components/Picker';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 
