@@ -2,23 +2,30 @@ import React from 'react';
 import { Text, Button } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 import Screen from './app/components/Screen';
+
+const Link = () => {
+  const navigation = useNavigation();
+  return (
+    <Button title="Click" onPress={() => navigation.navigate('TweetDetails')} />
+  );
+};
 
 const Tweets = ({ navigation }) => (
   <Screen>
     <Text>Tweets</Text>
     <Button
       title="View Tweet"
-      onPress={() => navigation.navigate('TweetDetails')}
+      onPress={() => navigation.navigate('TweetDetails', { id: 1 })}
     />
   </Screen>
 );
 
-const TweetDetails = () => (
+const TweetDetails = ({ route }) => (
   <Screen>
-    <Text>Tweet Details</Text>
+    <Text>Tweet Details {route.params.id}</Text>
   </Screen>
 );
 
