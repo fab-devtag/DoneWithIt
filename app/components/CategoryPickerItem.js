@@ -7,7 +7,7 @@ function CategoryPickerItem({ onPress, item }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Icon size={80} backgroundColor={item.backgroundColor} name={item.icon} />
-      <Text style={styles.label}>{item.label}</Text>
+      <Text style={[styles.label]}>{item.label}</Text>
     </TouchableOpacity>
   );
 }
