@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground, Image, Text } from 'react-native';
+
 import Button from '../components/Button';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       blurRadius={10}
@@ -17,12 +18,12 @@ function WelcomeScreen(props) {
         <Button
           color="primary"
           title="login"
-          onPress={() => console.log('log tapped')}
+          onPress={() => navigation.navigate('Login')}
         />
         <Button
           color="secondary"
           title="register"
-          onPress={() => console.log('register')}
+          onPress={() => navigation.navigate('Register')}
         />
       </View>
     </ImageBackground>
