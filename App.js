@@ -9,6 +9,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Screen from './app/components/Screen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AuthNavigator from './app/navigation/AuthNavigator';
+import AccountScreen from './app/screens/AccountScreen';
+import ListingsScreen from './app/screens/ListingsScreen';
+
+import AppNavigator from './app/navigation/AppNavigator';
+import navigationTheme from './app/navigation/navigationTheme';
 
 const Link = () => {
   const navigation = useNavigation();
@@ -63,8 +68,8 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }
