@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Button } from 'react-native';
+import { AppLoading } from 'expo';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,65 +17,34 @@ import AppNavigator from './app/navigation/AppNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
 
 import OfflineBar from './app/components/OfflineBar';
-
-/* const Link = () => {
-  const navigation = useNavigation();
-  return (
-    <Button title="Click" onPress={() => navigation.navigate('TweetDetails')} />
-  );
-};
-
-const Tweets = ({ navigation }) => (
-  <Screen>
-    <Text>Tweets</Text>
-    <Button
-      title="View Tweet"
-      onPress={() => navigation.navigate('TweetDetails', { id: 1 })}
-    />
-  </Screen>
-);
-
-const TweetDetails = ({ route }) => (
-  <Screen>
-    <Text>Tweet Details {route.params.id}</Text>
-  </Screen>
-);
-
-const Stack = createStackNavigator();
-const FeedNavigator = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen
-      name="TweetDetails"
-      component={TweetDetails}
-      options={({ route }) => ({
-        title: route.params.id,
-      })}
-    />
-  </Stack.Navigator>
-);
-
-const Account = () => (
-  <Screen>
-    <Text>Account</Text>
-  </Screen>
-);
-
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Feed" component={FeedNavigator} />
-    <Tab.Screen name="Account" component={Account} />
-  </Tab.Navigator>
-); */
+import AuthContext from './app/auth/context';
+import authStorage from './app/auth/storage';
 
 export default function App() {
+  const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
+
+  const restoreToken = async () => {
+    const token = await authStorage.getToken();
+
+    if (!token) return;
+
+    setUser(token);
+  };
+
+  useEffect(() => {
+    restoreToken();
+  }, []);
+
+  /*  if (!isReady)
+    return <AppLoading startAsync={restoreToken} onFinish={() => setIsReady(true)} /> */
+
   return (
-    <React.Fragment>
+    <AuthContext.Provider value={{ user, setUser }}>
       <OfflineBar />
       <NavigationContainer theme={navigationTheme}>
-        <AuthNavigator />
+        {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
-    </React.Fragment>
+    </AuthContext.Provider>
   );
 }
