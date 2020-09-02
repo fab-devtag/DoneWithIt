@@ -36,8 +36,10 @@ export default function App() {
     restoreToken();
   }, []);
 
-  /*  if (!isReady)
-    return <AppLoading startAsync={restoreToken} onFinish={() => setIsReady(true)} /> */
+  if (!isReady)
+    return (
+      <AppLoading startAsync={restoreToken} onFinish={() => setIsReady(true)} />
+    );
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
