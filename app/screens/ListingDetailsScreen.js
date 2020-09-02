@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Image } from 'react-native-expo-image-cache';
 
 import AppText from '../components/Text';
 
@@ -18,7 +13,9 @@ function ListingDetailsScreen({ route }) {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{ uri: listing.images[0].url }}
+        tint="light"
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+        uri={listing.images[0].url}
       ></Image>
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}> {listing.title}</AppText>

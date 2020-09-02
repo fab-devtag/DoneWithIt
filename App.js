@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, Button } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,7 +15,9 @@ import ListingsScreen from './app/screens/ListingsScreen';
 import AppNavigator from './app/navigation/AppNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
 
-const Link = () => {
+import OfflineBar from './app/components/OfflineBar';
+
+/* const Link = () => {
   const navigation = useNavigation();
   return (
     <Button title="Click" onPress={() => navigation.navigate('TweetDetails')} />
@@ -64,12 +66,15 @@ const TabNavigator = () => (
     <Tab.Screen name="Feed" component={FeedNavigator} />
     <Tab.Screen name="Account" component={Account} />
   </Tab.Navigator>
-);
+); */
 
 export default function App() {
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer>
+    <React.Fragment>
+      <OfflineBar />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </React.Fragment>
   );
 }
