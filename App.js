@@ -73,7 +73,7 @@ export default function App() {
     <React.Fragment>
       <OfflineBar />
       <NavigationContainer theme={navigationTheme}>
-        <AppNavigator />
+        <AuthNavigator />
       </NavigationContainer>
     </React.Fragment>
   );
