@@ -20,6 +20,8 @@ import OfflineBar from './app/components/OfflineBar';
 import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
 
+import { navigationRef } from './app/navigation/rootNavigation';
+
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
@@ -37,7 +39,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineBar />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} heme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>

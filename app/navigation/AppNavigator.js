@@ -10,38 +10,44 @@ import NewListingButton from './NewListingButton';
 
 import routes from '../navigation/routes';
 
-const Tab = createBottomTabNavigator();
+import navigation from './rootNavigation';
+import useNotifications from '../hooks/useNotifications';
 
-const AppNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen
-      name={routes.FEED}
-      component={FeedNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons name="home" size={size} color={color} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name={routes.LISTING_EDIT}
-      component={ListingEditScreen}
-      options={({ navigation }) => ({
-        tabBarButton: () => (
-          <NewListingButton onPress={() => navigation.navigate('Edit')} />
-        ),
-      })}
-    />
-    <Tab.Screen
-      name={routes.ACCOUNT}
-      component={AccountNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons name="account" size={size} color={color} />
-        ),
-      }}
-    />
-  </Tab.Navigator>
-);
+const Tab = createBottomTabNavigator();
+const AppNavigator = () => {
+  useNotifications();
+  console.log('3');
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name={routes.FEED}
+        component={FeedNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={routes.LISTING_EDIT}
+        component={ListingEditScreen}
+        options={({ navigation }) => ({
+          tabBarButton: () => (
+            <NewListingButton onPress={() => navigation.navigate('Edit')} />
+          ),
+        })}
+      />
+      <Tab.Screen
+        name={routes.ACCOUNT}
+        component={AccountNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="account" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 export default AppNavigator;

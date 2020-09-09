@@ -18,6 +18,7 @@ const FeedNavigator = () => (
     <Stack.Screen
       name={routes.LISTING_DEtAILS}
       component={ListingDetailsScreen}
+      options={{ headerShown: false }}
     />
   </Stack.Navigator>
 );

@@ -1,16 +1,32 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  Alert,
+} from 'react-native';
 import { Image } from 'react-native-expo-image-cache';
+import { Notifications } from 'expo';
 
 import AppText from '../components/Text';
 
 import colors from '../config/colors';
 import ListItem from '../components/lists/ListItem';
+import ContactSellerForm from '../components/ContactSellerForm';
 
 function ListingDetailsScreen({ route }) {
   const listing = route.params;
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === 'android' ? 50 : 0}
+      style={styles.container}
+    >
       <Image
         style={styles.image}
         tint="light"
@@ -27,15 +43,13 @@ function ListingDetailsScreen({ route }) {
           title="Jack Sparrow"
           subTitle="5 Listings"
         />
+        <ContactSellerForm listing={listing} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-  },
   detailsContainer: {
     padding: 20,
   },
@@ -43,18 +57,18 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 300,
   },
-  title: {
-    fontWeight: '500',
-    fontSize: 24,
-  },
   price: {
-    fontWeight: 'bold',
-    fontSize: 15,
     color: colors.secondary,
+    fontWeight: 'bold',
+    fontSize: 20,
     marginVertical: 10,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: '500',
+  },
   userContainer: {
-    marginVertical: 30,
+    marginVertical: 40,
   },
 });
 
