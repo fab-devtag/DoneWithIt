@@ -16,7 +16,6 @@ import useNotifications from '../hooks/useNotifications';
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
   useNotifications();
-  console.log('3');
   return (
     <Tab.Navigator>
       <Tab.Screen
