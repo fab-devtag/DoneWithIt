@@ -10,7 +10,6 @@ import {
   Alert,
 } from 'react-native';
 import { Image } from 'react-native-expo-image-cache';
-import { Notifications } from 'expo';
 
 import AppText from '../components/Text';
 
